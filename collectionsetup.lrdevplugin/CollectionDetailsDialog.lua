@@ -38,7 +38,8 @@ function CollectionDetailsDialog.show()
 			{
 				spacing = f:control_spacing(),
 				fill_horizontal = 1,
-				show_title = false,
+				title = "Collection Set",
+				font = "<system/bold>",
 
 				f:row
 				{
@@ -46,7 +47,7 @@ function CollectionDetailsDialog.show()
 					f:static_text
 					{
 						title = "Name: ",
-						font = "<system>",
+						font = "<system/bold>",
 						width = LrView.share "label_width",
 					},
 
@@ -68,8 +69,8 @@ function CollectionDetailsDialog.show()
 				{
 					title = "Collection Sets",
 					spacing = f:control_spacing(),
+					font = "<system>",
 					fill_horizontal = 1,
-					font = "<system/bold>",
 
 					f:checkbox
 					{
@@ -98,15 +99,16 @@ function CollectionDetailsDialog.show()
 			{
 				spacing = f:control_spacing(),
 				fill_horizontal = 1,
-				show_title = false,
+				title = "Trip Details",
+				font = "<system/bold>",
 
 				f:row
 				{
 					spacing = f:label_spacing(),
 					f:static_text
 					{
-						title = "Trip Name: ",
-						font = "<system>",
+						title = "Name: ",
+						font = "<system/bold>",
 						width = LrView.share "label_width",
 					},
 
@@ -128,7 +130,7 @@ function CollectionDetailsDialog.show()
 				f:group_box
 				{
 					title = "Capture Dates",
-					font = "<system/bold>",
+					font = "<system>",
 
 					f:row
       				{
@@ -137,16 +139,16 @@ function CollectionDetailsDialog.show()
         				{
           					title = "Start Date:",
           					alignment = 'right',
-							font = "<system>",
+							font = "<system/bold>",
 							width = LrView.share "label_width",
         				},
 
         				f:edit_field
         				{
 							tooltip = "e.g. 2017-05-05",
-          					width_in_chars = 20,
+          					width_in_chars = 18,
+							fill_horizontal = 1,
           					value = LrView.bind( 'startDate' ),
-							font = "<system>",
 							validate = function(f, value)
 								return Utils.isValidDate(value), value, value .. " is invalid, e.g. 2017-05-05"
 							end
@@ -159,14 +161,15 @@ function CollectionDetailsDialog.show()
         				{
           					title = "End Date:",
           					alignment = 'right',
-							font = "<system>",
+							font = "<system/bold>",
 							width = LrView.share "label_width",
         				},
 
         				f:edit_field
         				{
 							tooltip = "e.g. 2017-05-05",
-          					width_in_chars = 20,
+          					width_in_chars = 18,
+							fill_horizontal = 1,
           					value = LrView.bind( 'endDate' ),
 							font = "<system>",
 							validate = function(f, value)

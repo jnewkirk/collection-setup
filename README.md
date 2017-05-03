@@ -12,7 +12,7 @@ This plug-in will create the following structure of smart collections and a coll
   
  # Use Instructions
  
- Step #1 - Create a base collection set. In this example, the name of the base collection set is called Chicago. 
+ ### Step #1 - Create a base collection set. As you will see this step is optional if you already have a base collection set that you want the trip details to reside in. 
  
  ![Image of Add Collection Set](https://github.com/jnewkirk/collection-setup/blob/master/images/collectionset.png)
  
@@ -20,9 +20,11 @@ This plug-in will create the following structure of smart collections and a coll
  
  ![Image of Collection Set Dialog Box](https://github.com/jnewkirk/collection-setup/blob/master/images/collectionset_dialog.png)
  
- Enter "Chicago" in the name field and press Create. 
+ Perform the following steps: 
+ * Enter "Chicago" in the name field 
+ * Press "Create" 
  
- Step #2 - Enter in the trip details. In this example, the name of the trip collection set is called Spring, 2017. 
+ ### Step #2 - Enter in the trip details 
  
  ![Access the plug-in menu item](https://github.com/jnewkirk/collection-setup/blob/master/images/librarymenu.png)
  
@@ -30,9 +32,15 @@ This plug-in will create the following structure of smart collections and a coll
  
  ![Access the plug-in menu item](https://github.com/jnewkirk/collection-setup/blob/master/images/collectionsetup_dialog.png)
  
- Enter in "Spring, 2017" in the name field and "2017-05-05" in the start date and "2017-05-08" in the end date field and press Create. 
+ Perform the following steps: 
+ * Enter "Spring, 2017" in the Name field
+ * Check the box titled "Inside a Collection Set" 
+ * Select "Chicago" in the drop down list
+ * Enter "2017-05-02" in the Start Date
+ * Enter "2017-05-03" in the End Date
+ * Press "Create" 
  
- Results
+ ### Results
  
  Once completed the Collections area will be populated with a new Collection Set under the Chicago collection set. It will look like the following: 
  

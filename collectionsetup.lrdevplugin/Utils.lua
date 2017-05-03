@@ -17,8 +17,7 @@ Utils = {}
 function Utils.findCollectionSet(name)
 	sets = catalog:getChildCollectionSets()
 	for i,v in ipairs(sets) do
-		logger:trace(v:getName())
-  	if name == v:getName() then return v end
+  		if name == v:getName() then return v end
   end
 end
 

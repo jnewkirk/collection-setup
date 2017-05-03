@@ -157,7 +157,6 @@ function TripDetailsDialog.show()
 
 		if dialogResult == 'ok' then
 			if properties.collection_value ~= nil then
-				logger:trace("Location: " .. properties.collection_value.name)
 				properties.parentName = properties.collection_value.name
 			end
 			return 'ok', properties

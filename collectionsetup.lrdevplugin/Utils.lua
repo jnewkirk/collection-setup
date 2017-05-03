@@ -64,7 +64,6 @@ function Utils.isValidDate(dateString)
 	if y == nil or m == nil or d == nil then return false end
 
 	m, d, y = tonumber(m), tonumber(d), tonumber(y)
-	logger:trace(dateString, tostring(m), tostring(y), tostring(d))
 	if d <= 0 or d > 31 or m <= 0 or m > 12 or y <= 0 then
     	return false
 	end

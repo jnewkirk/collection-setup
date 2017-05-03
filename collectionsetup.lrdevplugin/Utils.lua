@@ -22,13 +22,14 @@ function Utils.findCollectionSet(name)
   end
 end
 
-function Utils.makeCollectionSet(name, parent, errorString)
-	local collectionSet = catalog:createCollectionSet(name, parent, true)
+function Utils.makeCollectionSet(name, parent)
+	local errorString = "\"" .. name .. "\"" .. " collection set already exists"
+	local collectionSet = catalog:createCollectionSet(name, parent, false)
 	if collectionSet == nil then
 		logger:error(errorString)
 	end
 
-	return collectionSet
+	return collectionSet, errorString
 end
 
 function Utils.isNotEmpty(string)

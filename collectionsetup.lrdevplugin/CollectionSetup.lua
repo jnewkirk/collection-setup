@@ -23,15 +23,16 @@ function CollectionSetup.run(tripName, parentName, startDate, endDate)
 				local result = Utils.Guard(catalog.hasWriteAccess, "Write access could not be obtained.")
 				if result == 'false' then return end
 
-				local errorString = "Unable to find " .. parentName .. " collectionSet"
-				local location = Utils.findCollectionSet(parentName)
-				if location == nil then
-					LrDialogs.message(errorString)
-					return
+				local location = nil
+				if parentName ~= nil then
+					location = Utils.findCollectionSet(parentName)
+					if location == nil then
+						LrDialogs.message("Unable to find " .. parentName .. " collection set")
+						return
+					end
 				end
 
-				errorString = "Unable to create " .. tripName .. " collectionSet"
-				local trip = Utils.makeCollectionSet(tripName, location, errorString)
+				local trip, errorString = Utils.makeCollectionSet(tripName, location)
 				if trip == nil then
 					LrDialogs.message(errorString)
 					return

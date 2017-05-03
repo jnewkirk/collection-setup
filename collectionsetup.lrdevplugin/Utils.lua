@@ -1,9 +1,13 @@
+-- Access the Lightroom SDK namespaces.
 local LrApplication = import 'LrApplication'
 
+-- Initialize the Logger
 local logger = import 'LrLogger'( 'CollectionSetup' )
 
+-- Access the Project namespaces.
 require "LoggerConfig"
 
+-- Get the activeCatalog
 local catalog = LrApplication.activeCatalog()
 
 ------------------------------------------------------------------------------
@@ -16,17 +20,6 @@ function Utils.findCollectionSet(name)
 		logger:trace(v:getName())
   	if name == v:getName() then return v end
   end
-end
-
-function Utils.getCollectionSet(name, parentName, errorString)
-	local parentCollectionSet = nil
-	if parentName ~= nil then
-		parentCollectionSet = Utils.findCollectionSet(parentName)
-	end
-
-	collectionSet = Utils.makeCollectionSet(name, parentCollectionSet, errorString)
-
-	return collectionSet
 end
 
 function Utils.makeCollectionSet(name, parent, errorString)
@@ -102,3 +95,5 @@ function Utils.print_r(arr, indentLevel)
 
     return str
 end
+
+return Utils

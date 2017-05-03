@@ -1,7 +1,7 @@
+
 ------------------------------------------------------------------------------
 SmartCollection = {}
 ------------------------------------------------------------------------------
-
 
 function SmartCollection.all(startDate, endDate)
 	return
@@ -73,3 +73,5 @@ function SmartCollection.select(startDate, endDate)
 		combine = "intersect"
 	}
 end
+
+return SmartCollection

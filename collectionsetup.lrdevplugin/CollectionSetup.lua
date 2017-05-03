@@ -1,10 +1,13 @@
+-- Access the Lightroom SDK namespaces.
 local LrDialogs = import 'LrDialogs'
 local LrApplication = import 'LrApplication'
 local LrTasks = import 'LrTasks'
 
+-- Initialize the local variables
 local logger = import 'LrLogger'( 'CollectionSetup' )
 local catalog = LrApplication.activeCatalog()
 
+-- Access the Project namespaces.
 require "LoggerConfig"
 require "Utils"
 require "SmartCollection"

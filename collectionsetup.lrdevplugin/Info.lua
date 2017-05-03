@@ -1,3 +1,4 @@
+
 return {
     LrPluginName          = "Collection Setup",
     LrToolkitIdentifier   = 'com.codeside.collectionsetup',

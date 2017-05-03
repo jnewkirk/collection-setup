@@ -20,6 +20,7 @@ function TripDetailsDialog.show()
 		local catalog = LrApplication.activeCatalog ()
 
 		local properties = LrBinding.makePropertyTable( context )
+		properties.parentName = nil
 		properties.tripName = "Trip Name"
 		properties.startDate = os.date("%Y-%m-%d", os.time())
 		properties.endDate = os.date("%Y-%m-%d", os.time() + (3600 * 24))
@@ -155,6 +156,10 @@ function TripDetailsDialog.show()
 		} )
 
 		if dialogResult == 'ok' then
+			if properties.collection_value ~= nil then
+				logger:trace("Location: " .. properties.collection_value.name)
+				properties.parentName = properties.collection_value.name
+			end
 			return 'ok', properties
 		end
 

@@ -11,17 +11,16 @@ local logger = import 'LrLogger'( 'CollectionSetup' )
 require "LoggerConfig"
 require "CollectionSetup"
 
-CollectionDetailsDialog = {}
+TripDetailsDialog = {}
 
-function CollectionDetailsDialog.show()
+function TripDetailsDialog.show()
 	return LrFunctionContext.callWithContext( "CreateCollectionDialog", function(context)
 
 		local f = LrView.osFactory()
 		local catalog = LrApplication.activeCatalog ()
 
 		local properties = LrBinding.makePropertyTable( context )
-		properties.name = "Collection Set"
-		properties.tripName = "Collection Set"
+		properties.tripName = "Trip Name"
 		properties.startDate = os.date("%Y-%m-%d", os.time())
 		properties.endDate = os.date("%Y-%m-%d", os.time() + (3600 * 24))
 		properties.checkbox_state = 'unchecked'
@@ -38,8 +37,6 @@ function CollectionDetailsDialog.show()
 			{
 				spacing = f:control_spacing(),
 				fill_horizontal = 1,
-				title = "Collection Set",
-				font = "<system/bold>",
 
 				f:row
 				{
@@ -54,7 +51,7 @@ function CollectionDetailsDialog.show()
 					f:edit_field
 					{
 						fill_horizontal = 1,
-						value = LrView.bind( 'name' ),
+						value = LrView.bind( 'tripName' ),
 						font = "<system>",
 						validate = function (f, value)
 							return Utils.isNotEmpty(value), value, "You must enter the name"
@@ -67,7 +64,7 @@ function CollectionDetailsDialog.show()
 				},
 				f:group_box
 				{
-					title = "Collection Sets",
+					title = "Location",
 					spacing = f:control_spacing(),
 					font = "<system>",
 					fill_horizontal = 1,
@@ -99,91 +96,59 @@ function CollectionDetailsDialog.show()
 			{
 				spacing = f:control_spacing(),
 				fill_horizontal = 1,
-				title = "Trip Details",
-				font = "<system/bold>",
+				title = "Capture Dates",
+				font = "<system>",
 
 				f:row
-				{
+      			{
 					spacing = f:label_spacing(),
-					f:static_text
-					{
-						title = "Name: ",
+        			f:static_text
+        			{
+          				title = "Start Date:",
+          				alignment = 'right',
 						font = "<system/bold>",
 						width = LrView.share "label_width",
-					},
-
-					f:edit_field
-					{
-						width_in_chars = 20,
-						value = LrView.bind( 'tripName' ),
-						font = "<system>",
+        			},
+        			f:edit_field
+        			{
+						tooltip = "e.g. 2017-05-05",
+          				width_in_chars = 18,
 						fill_horizontal = 1,
-						validate = function (f, value)
-							return Utils.isNotEmpty(value), value, "You must enter the trip name"
+          				value = LrView.bind( 'startDate' ),
+						validate = function(f, value)
+							return Utils.isValidDate(value), value, value .. " is invalid, e.g. 2017-05-05"
 						end
-					},
+        			},
 				},
-				f:spacer
-				{
-					height = 5,
-				},
-				f:group_box
-				{
-					title = "Capture Dates",
-					font = "<system>",
+				f:row
+      			{
+					spacing = f:label_spacing(),
+        			f:static_text
+        			{
+          				title = "End Date:",
+          				alignment = 'right',
+						font = "<system/bold>",
+						width = LrView.share "label_width",
+        			},
 
-					f:row
-      				{
-						spacing = f:label_spacing(),
-        				f:static_text
-        				{
-          					title = "Start Date:",
-          					alignment = 'right',
-							font = "<system/bold>",
-							width = LrView.share "label_width",
-        				},
-
-        				f:edit_field
-        				{
-							tooltip = "e.g. 2017-05-05",
-          					width_in_chars = 18,
-							fill_horizontal = 1,
-          					value = LrView.bind( 'startDate' ),
-							validate = function(f, value)
-								return Utils.isValidDate(value), value, value .. " is invalid, e.g. 2017-05-05"
-							end
-        				},
-					},
-					f:row
-      				{
-						spacing = f:label_spacing(),
-        				f:static_text
-        				{
-          					title = "End Date:",
-          					alignment = 'right',
-							font = "<system/bold>",
-							width = LrView.share "label_width",
-        				},
-
-        				f:edit_field
-        				{
-							tooltip = "e.g. 2017-05-05",
-          					width_in_chars = 18,
-							fill_horizontal = 1,
-          					value = LrView.bind( 'endDate' ),
-							font = "<system>",
-							validate = function(f, value)
-								return Utils.isValidDate(value), value, value .. " is invalid, e.g. 2017-05-05"
-							end
-        				},
-					},
+        			f:edit_field
+        			{
+						tooltip = "e.g. 2017-05-05",
+          				width_in_chars = 18,
+						fill_horizontal = 1,
+          				value = LrView.bind( 'endDate' ),
+						font = "<system>",
+						validate = function(f, value)
+							return Utils.isValidDate(value), value, value .. " is invalid, e.g. 2017-05-05"
+						end
+        			},
 				},
 			},
 		}
 
 	    local dialogResult = LrDialogs.presentModalDialog(
       	{
-			title = "Create Collection Sets",
+			title = "Trip Details",
 			resizeable = "false",
 			contents = contents,
           	actionVerb = "Create",
@@ -197,4 +162,4 @@ function CollectionDetailsDialog.show()
 	end )
 end
 
-return CollectionDetailsDialog
+return TripDetailsDialog

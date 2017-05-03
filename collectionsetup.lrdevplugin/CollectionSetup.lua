@@ -13,15 +13,15 @@ require "SmartCollection"
 CollectionSetup = {}
 -------------------------------------------------------------------------------
 
-function CollectionSetup.run(locationName, parentName, tripName, startDate, endDate)
+function CollectionSetup.run(tripName, parentName, startDate, endDate)
 	LrTasks.startAsyncTask(function()
 		catalog:withWriteAccessDo("build collections",
 			function(context)
 				local result = Utils.Guard(catalog.hasWriteAccess, "Write access could not be obtained.")
 				if result == 'false' then return end
 
-				local errorString = "Unable to create " .. locationName .. " collectionSet"
-				local location = Utils.getCollectionSet(locationName, parentName, errorString)
+				local errorString = "Unable to find " .. parentName .. " collectionSet"
+				local location = Utils.findCollectionSet(parentName)
 				if location == nil then
 					LrDialogs.message(errorString)
 					return

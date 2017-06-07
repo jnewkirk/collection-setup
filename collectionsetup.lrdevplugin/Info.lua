@@ -1,6 +1,7 @@
 
 return {
     LrPluginName          = "Collection Setup",
+    LrPluginInfoUrl       = "https://github.com/jnewkirk/collection-setup",
     LrToolkitIdentifier   = 'com.codeside.collectionsetup',
 
     LrSdkVersion         = 6.0,

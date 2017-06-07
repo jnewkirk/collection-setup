@@ -15,8 +15,8 @@ return {
       },
     },
 
-    VERSION = { major=1, minor=0, revision=0, build=1, },
-    VSTRING = '1.0.0.0',
+    VERSION = { major=1, minor=1, revision=0, build=1, },
+    VSTRING = '1.1.0.1',
 
-	LrInitPlugin = 'LRInit.lua'
+    LrInitPlugin = 'LRInit.lua'
 }
